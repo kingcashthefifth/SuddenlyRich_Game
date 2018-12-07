@@ -59,8 +59,6 @@ Make a one player game where people down on their luck can lose all their money 
 ##### Concentration
 Sometimes just called "Memory", it's a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. If you get all the matching cards, you've won!
 
-[http://www.thegamesjournal.com/articles/GameSystems4.shtml](http://www.thegamesjournal.com/articles/GameSystems4.shtml)
-
 ---
 
 ### Feedback + Evaluation
