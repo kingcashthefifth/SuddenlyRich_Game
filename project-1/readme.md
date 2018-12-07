@@ -66,10 +66,18 @@ The project is meant to demonstrate that everyone is minimally capable of __appl
 
 Given __Bloom's Taxonomy__ students should be able to apply their knowledge of HTML, CSS and javascript. Students must remember enough of the concepts to to understand how to apply their knowledge / build this project.
 
+Specifically each project must include the following code:
+
+- use a function, loop & conditional
+- set an event listener for a click, on change or other
+- use html tags to build a page on screen, either directly in an HTML file, or with the DOM
+- arrange elements on the screen using css box model, position or display
+- write CSS selectors using classes or ids
+
+
 ![https://cft.vanderbilt.edu/wp-content/uploads/sites/59/Blooms-Taxonomy-650x366.jpg](https://cft.vanderbilt.edu/wp-content/uploads/sites/59/Blooms-Taxonomy-650x366.jpg)---
 
 ### Useful Resources
 
 * **[MDN Javascript Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)** _(a great reference for all things Vanilla Javascript)_
-* **[jQuery Docs](http://api.jquery.com)** _(if you're using jQuery)_
 * **[Github Pages](https://pages.github.com)** _(for hosting your game)_
