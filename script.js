@@ -2,13 +2,16 @@ var x;
 var y;
 var start = 0;
 var c = 0;
-var score = 0;
-var showCountdown = 60;
+
 var mouseX;
 var mouseY;
 var collideCoinArr = [];
 var collideSpecialsArr = [];
 
+var timerInterval;
+var timerCountdown;
+var score = 0;
+var showCountdown = 60;
 var objectsSpeed = 500;
 var specialsSpeed = 10000;
 var objectsFallSpeed = 5;
@@ -179,16 +182,24 @@ function endGame() {
         stage += 1;
         stages();
         showCountdown = 60;
-        setTimeout(endGame, 60000);
-        var timer = setInterval(countdown, 1000);
+        clearTimeout(timerCountdown);
+        timerCountdown = setTimeout(endGame, 60000);
+        timerInterval = setInterval(countdown, 1000);
         setTimeout(function() {
-            clearInterval(timer)
+            clearInterval(timerInterval)
         }, 60000);
     } else {
     document.getElementById("score").innerHTML = "Current total score: $" + score;
     document.getElementById("highscore").innerHTML = "Highscore: $" + store.getItem("highscore");
     start = 2;
+    score = 0;
     showCountdown = 60;
+    objectsSpeed = 500;
+    specialsSpeed = 10000;
+    objectsFallSpeed = 5;
+    specialsFallSpeed = 3;
+    stage = 1;
+    minPass = 200;
     var audio = document.querySelector("#endGame");
     audio.currentTime = 0;
     audio.play();
@@ -218,10 +229,10 @@ function startGame() {
     document.querySelector("h1").style.opacity = "1";
     document.querySelector("h1").style.animation = "titleFadeOut 1s forwards";
     document.querySelector("h1").style.animationDelay = "";
-    setTimeout(endGame, 60000);
-    var timer = setInterval(countdown, 1000);
+    timerCountdown = setTimeout(endGame, 60000);
+    timerInterval = setInterval(countdown, 1000);
     setTimeout(function() {
-        clearInterval(timer)
+        clearInterval(timerInterval)
     }, 60000);
     stages();
 }
