@@ -133,7 +133,7 @@ p {
 #score {
 	position: absolute;
 	color: black;
-	top: 40px;
+	top: 45px;
 	left: 30px;
 	font-size: 1.2em;
 }
@@ -141,7 +141,7 @@ p {
 #stageGoal {
 	position: absolute;
 	color: black;
-	top: 70px;
+	top: 80px;
 	left: 30px;
 	font-size: 1.2em;
 }
@@ -149,7 +149,7 @@ p {
 #countdown {
 	position: absolute;
 	color: black;
-	top: 90px;
+	top: 105px;
 	left: 30px;
 	font-size: 1.2em;
 }

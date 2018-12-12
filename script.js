@@ -8,8 +8,6 @@ var mouseY;
 var collideCoinArr = [];
 var collideSpecialsArr = [];
 
-var timerInterval;
-var timerCountdown;
 var score = 0;
 var showCountdown = 60;
 var objectsSpeed = 500;
@@ -31,6 +29,11 @@ if (store.getItem("highscore") == null) {store.setItem("highscore", 0);};
 function addScore() {
     score++;
     this.style.opacity = "0";
+    for(var i = 0; i < this.length; i++) {
+        if (this.style.opacity == "0") {
+            this.parentNode.removeChild(this);
+        }
+    }
     var audio = document.querySelector("#ding");
     audio.currentTime = 0;
     audio.play();
@@ -44,6 +47,11 @@ function addScore() {
 function addScoreSpecials() {
     score+= 10;
     this.style.opacity = "0";
+    for(var i = 0; i < this.length; i++) {
+        if (this.style.opacity == "0") {
+            this.parentNode.removeChild(this);
+        }
+    }
     var audio = document.querySelector("#chaChing");
     audio.currentTime = 0;
     audio.play();
@@ -105,15 +113,9 @@ function deleteObject() {
         if(hitbox[i].offsetTop > document.body.clientHeight) {
             hitbox[i].parentNode.removeChild(hitbox[i]);
         }
-        if (hitbox[i].style.opacity == "0") {
-            hitbox[i].parentNode.removeChild(hitbox[i]);
-        }
     }
     for(var i = 0; i < specials.length; i++) {
         if(specials[i].offsetTop > document.body.clientHeight) {
-            specials[i].parentNode.removeChild(specials[i]);
-        }
-        if (specials[i].style.opacity == "0") {
             specials[i].parentNode.removeChild(specials[i]);
         }
     }
@@ -121,11 +123,7 @@ function deleteObject() {
         if(objects[i].offsetTop > document.body.clientHeight) {
             objects[i].parentNode.removeChild(objects[i]);
         }
-        if (objects[i].style.opacity == "0") {
-            objects[i].parentNode.removeChild(objects[i]);
-        }
     }
-
 }
 function cHighscore() {
     if(store.getItem("highscore") < score) {
@@ -143,11 +141,13 @@ setInterval(function() {
     if(start === 1) {
         document.getElementById("start").style.opacity = "0";
         document.querySelector("#score").style.opacity = "1";
+        stages();
         c = 1;
     }
     else if(start === 2) {
         document.getElementById("start").style.opacity = "1";
         document.querySelector("#score").style.opacity = "0";
+        document.querySelector("#stageGoal").style.opacity = "0";
         c = 0;
     }
 }, 1);
@@ -181,14 +181,17 @@ function endGame() {
         specialsFallSpeed -= 0.1;
         stage += 1;
         stages();
-        showCountdown = 60;
         clearTimeout(timerCountdown);
-        timerCountdown = setTimeout(endGame, 60000);
-        timerInterval = setInterval(countdown, 1000);
+        clearInterval(timerInterval);
+        var timerCountdown = setTimeout(endGame, 60000);
+        var timerInterval = setInterval(countdown, 1000);
         setTimeout(function() {
             clearInterval(timerInterval)
         }, 60000);
+        showCountdown = 60;
     } else {
+    clearTimeout(timerCountdown);
+    clearInterval(timerInterval);
     document.getElementById("score").innerHTML = "Current total score: $" + score;
     document.getElementById("highscore").innerHTML = "Highscore: $" + store.getItem("highscore");
     start = 2;
@@ -225,12 +228,13 @@ function startGame() {
     document.getElementById("score").innerHTML = "Current total score: $" + score;
     document.querySelector("#countdown").style.opacity = "1";
     document.querySelector("#score").style.opacity = "1";
+    document.querySelector("#stageGoal").style.opacity = "1";
     document.querySelector("*").style = "overflow: hidden; cursor: url(basket.png), auto;";
     document.querySelector("h1").style.opacity = "1";
     document.querySelector("h1").style.animation = "titleFadeOut 1s forwards";
     document.querySelector("h1").style.animationDelay = "";
-    timerCountdown = setTimeout(endGame, 60000);
-    timerInterval = setInterval(countdown, 1000);
+    var timerCountdown = setTimeout(endGame, 60000);
+    var timerInterval = setInterval(countdown, 1000);
     setTimeout(function() {
         clearInterval(timerInterval)
     }, 60000);
