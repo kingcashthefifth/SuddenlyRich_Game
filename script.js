@@ -17,6 +17,7 @@ var stage = 1;
 var minPass = 200;
 
 var store = window.localStorage;
+if (store.getItem("highscore") == null) {store.setItem("highscore", 0);};
 
 // function checkCollide(event) {
 //     if(event.clientX < 25 || event.clientX > document.body.clientWidth - 25 || event.clientY < 25 || event.clientY > document.body.clientHeight - 25) {
