@@ -63,9 +63,9 @@ function addScoreSpecials() {
 
 function create() {
     if(c === 1) {
-        var tempLeft = Math.round(Math.random() * document.body.clientWidth);
+        var tempLeft = Math.round(Math.random() * document.body.clientWidth) - 50;
         var hitbox = document.createElement("div");
-        hitbox.style = `width: 110px; height: 50px; left:${tempLeft}px; animation: fall ${parseInt(objectsFallSpeed)}s linear forwards;`;
+        hitbox.style = `width: 150px; height: 50px; left:${tempLeft}px; animation: fall ${parseInt(objectsFallSpeed)}s linear forwards;`;
         hitbox.classList = "hitbox";
         // hitbox.style.animation = `fall ${parseInt(objectsFallSpeed)}s linear forwards;`
         var a = document.createElement("div");
@@ -81,10 +81,10 @@ function create() {
 
 function specials() {
     if(c === 1) {
-        var tempLeft = Math.round(Math.random() * document.body.clientWidth);
+        var tempLeft = Math.round(Math.random() * document.body.clientWidth) - 50;
         var a = document.createElement("div");
         var hitbox = document.createElement("div");
-        hitbox.style = `width: 110px; height: 50px; left:${tempLeft}px; animation: fall ${parseInt(specialsFallSpeed)}s linear forwards, blinking 1s infinite;`
+        hitbox.style = `width: 150px; height: 50px; left:${tempLeft}px; animation: fall ${parseInt(specialsFallSpeed)}s linear forwards, blinking 1s infinite;`
         // hitbox.style.animation = `fall ${parseInt(specialsFallSpeed)}s linear forwards, blinking 1s infinite;`;
         hitbox.classList = "hitbox";
         a.setAttribute("class", "specials");
