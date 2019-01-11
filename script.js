@@ -7,6 +7,7 @@ var mouseX;
 var mouseY;
 var collideCoinArr = [];
 var collideSpecialsArr = [];
+var gamePause = false;
 
 var score = 0;
 var showCountdown = 60;
